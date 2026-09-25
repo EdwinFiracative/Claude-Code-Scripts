@@ -1,0 +1,33 @@
+[[sources]]
+id = "emp001_fact"
+description = "Billing database. Contains dbo.Pedidos and its triggers."
+type = "sqlserver"
+host = "186.28.243.188"
+port = 63138
+database = "Emp001_fact"
+user = "claude_reader"
+password = "${DB_PASSWORD}"
+sslmode = "require"
+
+[[sources]]
+id = "erpdb"
+description = "ERP database. Contains OrderHeader and OrderReference."
+type = "sqlserver"
+host = "186.28.243.188"
+port = 63138
+database = "ErpDb"
+user = "claude_reader"
+password = "${DB_PASSWORD}"
+sslmode = "require"
+
+[[tools]]
+name = "execute_sql"
+source = "emp001_fact"
+readonly = true
+max_rows = 500
+
+[[tools]]
+name = "execute_sql"
+source = "erpdb"
+readonly = true
+max_rows = 500
