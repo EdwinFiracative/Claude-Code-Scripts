@@ -20,6 +20,17 @@ user = "claude_reader"
 password = "${DB_PASSWORD}"
 sslmode = "require"
 
+[[sources]]
+id = "emp001_inv"
+description = "Stocks and references database. "
+type = "sqlserver"
+host = "186.28.243.188"
+port = 63138
+database = "Emp001_inv"
+user = "claude_reader"
+password = "${DB_PASSWORD}"
+sslmode = "require"
+
 [[tools]]
 name = "execute_sql"
 source = "emp001_fact"
@@ -29,5 +40,11 @@ max_rows = 500
 [[tools]]
 name = "execute_sql"
 source = "erpdb"
+readonly = true
+max_rows = 500
+
+[[tools]]
+name = "execute_sql"
+source = "emp001_inv"
 readonly = true
 max_rows = 500
